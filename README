@@ -11,3 +11,19 @@ Switch to the `~/.vim` directory, and fetch submodules:
     cd ~/.vim
     git submodule init
     git submodule update
+
+
+Add a new git submodule:
+
+git submodule add http://github.location/bundle.git bundle/bundle-name
+git add .
+git commit -m "install bundle-name as submodule." 
+
+Upgrade a bundle.. ie. fugitive
+
+cd ~/.vim/bundle/fugitive
+git pull origin master
+
+OR
+
+git submodule foreach git pull origin master
