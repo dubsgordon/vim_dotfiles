@@ -1,7 +1,10 @@
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+if !exists("g:loaded_pathogen")
+  call pathogen#runtime_append_all_bundles()
+  call pathogen#helptags()
+endif
+
 set background=light
-"colorscheme solarized
+colorscheme solarized
 set hidden
 set ts=2 sts=2 sw=2 expandtab
 
@@ -59,8 +62,8 @@ if has("autocmd")
   syntax on
    
   " Source the vimrc file after a save
-  autocmd bufwritepost .vimrc source $MYVIMRC
-
+  autocmd! bufwritepost .vimrc source $MYVIMRC
+  autocmd! bufwritepost vimrc source $MYVIMRC
   " Restore cursor posistion when reediting file.
   autocmd BufReadPost *
   	\ if line("'\"") > 1 && line("'\"") <= line("$") |
