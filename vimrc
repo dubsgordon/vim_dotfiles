@@ -22,6 +22,7 @@ set formatprg=par
 
 " Key Maping.
 nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
+nnoremap <F4> :GundoToggle<CR>
 
 " ,ew expands as :e path/to/directory/of/cur/file 
 " ew: Open in Window es: split ev: vertical et: tap
