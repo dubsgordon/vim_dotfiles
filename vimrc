@@ -7,6 +7,7 @@ set background=light
 colorscheme solarized
 set hidden
 set ts=2 sts=2 sw=2 expandtab
+set hlsearch
 
 " Show syntax highlighting groups for word under cursor (C-Shift-P)
 nmap <C-S-P> :call <SID>SynStack()<CR>
@@ -64,6 +65,7 @@ if has("autocmd")
   " Source the vimrc file after a save
   autocmd! bufwritepost .vimrc source $MYVIMRC
   autocmd! bufwritepost vimrc source $MYVIMRC
+
   " Restore cursor posistion when reediting file.
   autocmd BufReadPost *
   	\ if line("'\"") > 1 && line("'\"") <= line("$") |
