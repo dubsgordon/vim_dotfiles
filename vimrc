@@ -9,6 +9,12 @@ set hidden
 set ts=2 sts=2 sw=2 expandtab
 set hlsearch
 
+" Autocompletion
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+
 " Show syntax highlighting groups for word under cursor (C-Shift-P)
 nmap <C-S-P> :call <SID>SynStack()<CR>
 function! <SID>SynStack()
