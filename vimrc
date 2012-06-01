@@ -3,12 +3,23 @@ if !exists("g:loaded_pathogen")
   call pathogen#helptags()
 endif
 
-set background=light
+" solarized options
+" honestly, this is sort of a mess right now, these are the settings which
+" allow for the best colors with my current iterm2
+set background=dark
 colorscheme solarized
-set hidden   "hides buffers instead of closing them
+let g:solarized_termcolors=256
+" let g:solarized_visibility="high"
+" let g:solarized_contrast="high"
+
+
+
+set hidden
 set ts=2 sts=2 sw=2 expandtab
 set hlsearch
-let mapleader=','  "default <leader> key, switched from '\'
+
+" default <leader> key, switched from '\'
+let mapleader=','
 
 
 " Quick open the .vimrc file for edits!
@@ -34,9 +45,11 @@ set formatprg=par
 " Key Maping.
 nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
 nnoremap <F4> :GundoToggle<CR>
-nnoremap <esc> :noh<return><esc>
 
-" ,ew expands as :e path/to/directory/of/currentfile 
+" This clears the last highlighted pattern after a searh by hitting return
+nnoremap <CR> :noh<CR><CR>
+
+" ,ew expands as :e path/to/directory/of/currentfile
 " ew: Open in Window es: split ev: vertical et: tab
 " also: allows expand current dir anywhere at cmdline with '%%'
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
@@ -62,7 +75,7 @@ set guifont=Menlo:h14
 " Setrs search highlighting when hitting  line numbers
 set number
 
-" Shortcut to rapidly toggle 'set list'
+" Shortcut to rapidly toggle list, ie. show/hide whitespace
 nmap <leader>l :set list!<CR>
 
 " Toggle spell checking on and off with ,s
@@ -76,7 +89,7 @@ if has("autocmd")
   " Enable file type detection and syntax highlight
   filetype plugin indent on
   syntax on
-   
+
   " Source the vimrc file after a save
   autocmd! bufwritepost .vimrc source $MYVIMRC
   autocmd! bufwritepost vimrc source $MYVIMRC
@@ -89,12 +102,12 @@ if has("autocmd")
   " Syntax of these languages is fussy over tabs Vs spaces
   autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
   autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-   
+
   " Customisations based on house-style (arbitrary)
   autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
-   
+
   " Treat .rss files as XML
   autocmd BufNewFile,BufRead *.rss setfiletype xml
 endif
@@ -110,7 +123,7 @@ function! Stab()
   endif
   call SummarizeTabs()
 endfunction
-  
+
 function! SummarizeTabs()
   try
     echohl ModeMsg
@@ -140,18 +153,20 @@ function! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfunction
 
-inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
+" inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
 
 " from https://gist.github.com/287147
 " to autocall tabularize when using cucumber table..
-function! s:align()
-  let p = '^\s*|\s.*\s|\s*$'
-  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
-    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
-    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
-    Tabularize/|/l1
-    normal! 0
-    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
-  endif
-endfunction
+" Might be cool to implement later...
+"
+" function! s:align()
+" let p = '^\s*|\s.*\s|\s*$'
+"  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+"    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+"    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+"    Tabularize/|/l1
+"    normal! 0
+"    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+"  endif
+" endfunction
 
