@@ -8,6 +8,11 @@ colorscheme solarized
 set hidden   "hides buffers instead of closing them
 set ts=2 sts=2 sw=2 expandtab
 set hlsearch
+let mapleader=','  "default <leader> key, switched from '\'
+
+
+" Quick open the .vimrc file for edits!
+nmap <silent> <leader>rc :e $MYVIMRC<CR>
 
 " Autocompletion
 autocmd FileType python set omnifunc=pythoncomplete#Complete
@@ -31,10 +36,9 @@ nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
 nnoremap <F4> :GundoToggle<CR>
 nnoremap <esc> :noh<return><esc>
 
-" ,ew expands as :e path/to/directory/of/cur/file 
+" ,ew expands as :e path/to/directory/of/currentfile 
 " ew: Open in Window es: split ev: vertical et: tap
 " also: allows expand current dir anywhere at cmdline with '%%'
-let mapleader=','
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 map <leader>ew :e %%
 map <leader>es :sp %%
@@ -52,7 +56,10 @@ map <C-l> <C-w>l
 set guioptions-=m
 set guioptions-=T
 
-" Set line numbers
+" Set default font and size
+set guifont=Menlo:h14
+
+" Setrs search highlighting when hitting  line numbers
 set number
 
 " Shortcut to rapidly toggle 'set list'
