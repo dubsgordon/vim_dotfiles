@@ -27,3 +27,17 @@ git pull origin master
 OR
 
 git submodule foreach git pull origin master
+
+
+
+
+Note: command-t extension requires a build after update or install:
+ALSO note that if using RVM, you should use system version of ruby which is
+the ruby macvim is supporting
+
+rvm use system
+
+cd ~/.vim/bundle/command-t
+bundle install
+rake make
+

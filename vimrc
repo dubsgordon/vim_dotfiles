@@ -5,7 +5,7 @@ endif
 
 set background=light
 colorscheme solarized
-set hidden
+set hidden   "hides buffers instead of closing them
 set ts=2 sts=2 sw=2 expandtab
 set hlsearch
 
@@ -29,6 +29,7 @@ set formatprg=par
 " Key Maping.
 nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
 nnoremap <F4> :GundoToggle<CR>
+nnoremap <esc> :noh<return><esc>
 
 " ,ew expands as :e path/to/directory/of/cur/file 
 " ew: Open in Window es: split ev: vertical et: tap
