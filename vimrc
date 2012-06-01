@@ -37,7 +37,7 @@ nnoremap <F4> :GundoToggle<CR>
 nnoremap <esc> :noh<return><esc>
 
 " ,ew expands as :e path/to/directory/of/currentfile 
-" ew: Open in Window es: split ev: vertical et: tap
+" ew: Open in Window es: split ev: vertical et: tab
 " also: allows expand current dir anywhere at cmdline with '%%'
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 map <leader>ew :e %%
