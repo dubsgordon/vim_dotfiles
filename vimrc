@@ -4,11 +4,10 @@ if !exists("g:loaded_pathogen")
 endif
 
 " solarized options
-" honestly, this is sort of a mess right now, these are the settings which
-" allow for the best colors with my current iterm2
 set background=dark
 colorscheme solarized
-let g:solarized_termcolors=256
+" not needed any longer on current mac, with most recent iterm2 build
+" let g:solarized_termcolors=16
 " let g:solarized_visibility="high"
 " let g:solarized_contrast="high"
 
