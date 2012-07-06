@@ -6,12 +6,6 @@ endif
 " solarized options
 set background=dark
 colorscheme solarized
-" not needed any longer on current mac, with most recent iterm2 build
-" let g:solarized_termcolors=16
-" let g:solarized_visibility="high"
-" let g:solarized_contrast="high"
-
-
 
 set hidden
 set ts=2 sts=2 sw=2 expandtab
@@ -44,6 +38,16 @@ set formatprg=par
 " Key Maping.
 nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
 nnoremap <F4> :GundoToggle<CR>
+
+" netrw settings
+let g:netrw_liststyle=3
+" let g:netrw_browse_split=4
+" let g:netrw_preview=1
+
+" Adjust window size using Command+Arrow (+/- 5)
+nnoremap <F7> :vertical resize +5<CR>
+nnoremap <F8> :vertical resize -5<CR>
+nnoremap <S-F8> :resize +5<CR>
 
 " This clears the last highlighted pattern after a searh by hitting return
 nnoremap <CR> :noh<CR><CR>
