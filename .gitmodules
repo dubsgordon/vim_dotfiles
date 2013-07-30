@@ -30,4 +30,4 @@
 	url = git://github.com/derekwyatt/vim-scala.git
 [submodule "bundle/githublink"]
 	path = bundle/githublink
-	url = git://github.com:jtai/vim-githublink.git
+	url = git://github.com/jtai/vim-githublink.git
