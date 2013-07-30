@@ -4,6 +4,9 @@ if !exists("g:loaded_pathogen")
 endif
 
 " solarized options
+" Sometimes I need this t_Co set for vim to look nice in a terminal and
+" sometimes I dont...
+set t_Co=256
 set background=dark
 colorscheme solarized
 
@@ -155,3 +158,5 @@ function! <SID>StripTrailingWhitespaces()
     let @/=_s
     call cursor(l, c)
 endfunction
+
+
